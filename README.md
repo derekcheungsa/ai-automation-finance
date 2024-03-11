@@ -56,7 +56,7 @@ AI-Automation-Finance is licensed under the MIT license. See the [LICENSE](LICEN
 
 ## Contact
 
-If you have any questions or feedback, please don't hesitate to contact us. You can reach us by opening an issue or sending an email to [insert email address].
+If you have any questions or feedback, please don't hesitate to contact us. You can reach us by opening an issue or sending an email to [derekcheungsa@gmail.com].
 
 Thank you for joining us in AI-Automation-Finance! We look forward to learning and growing with you.
 
