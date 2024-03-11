@@ -11,9 +11,7 @@ class GmailTools():
     """
 
     # Initiate a POST request to the send email
-    response = requests.post(
-        "https://n8n.aifornoncoders.com/webhook/e093a45a-4da8-4180-b176-281775ac96fe",
-        json={'input': full_report})
+    response = requests.post("N8N-GMAIL-WEB_HOOK", json={'input': full_report})
     # Parse the JSON response
     answer = response.text
     return answer
