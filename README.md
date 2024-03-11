@@ -1,6 +1,6 @@
-# AI-Automation-Finance
+# AI Automation Finance
 
-Welcome to AI-Automation-Finance! This repository is designed to serve as a learning resource for individuals looking to build AI-assisted automations with a focus on the finance industry. Our goal is to create a collaborative and supportive community of learners, where everyone can share their knowledge and experience, ask questions, and learn from one another.
+Welcome to AI Automation Finance! This repository is designed to serve as a learning resource for individuals looking to build AI-assisted automations with a focus on the finance industry. Our goal is to create a collaborative and supportive community of learners, where everyone can share their knowledge and experience, ask questions, and learn from one another.
 
 
 [![Watch the video](https://img.youtube.com/vi/NIzGctlvzBM/maxresdefault.jpg)](https://youtu.be/NIzGctlvzBM)
