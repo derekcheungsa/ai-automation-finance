@@ -1,5 +1,8 @@
 from langchain.tools import tool
 import requests
+import os
+
+N8N_WEBHOOK_URL = os.getenv('N8N_WEBHOOK_URL')
 
 
 class SecTools():
@@ -11,9 +14,7 @@ class SecTools():
     """
 
     # Initiate a POST request to the SEC API
-    response = requests.post(
-        "https://n8n.aifornoncoders.com/webhook/d707d430-f73a-4378-a6da-b7427c704cf9",
-        json={'input': question})
+    response = requests.post(N8N_WEBHOOK_URL, json={'input': question})
     # Parse the JSON response
     answer = response.text
     return answer

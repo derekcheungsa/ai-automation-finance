@@ -1,9 +1,13 @@
 # AI Automation Finance
 
-Welcome to AI Automation Finance! This repository is designed to serve as a learning resource for individuals looking to build AI-assisted automations with a focus on the finance industry. Our goal is to create a collaborative and supportive community of learners, where everyone can share their knowledge and experience, ask questions, and learn from one another.
+Welcome to AI Automation Finance! This repository is designed to serve as a learning resource for individuals looking to build AI-assisted automations with a focus on the finance industry. 
+
+No coding background? No problem! We understand that not everyone comes from a technical background. That's why we've designed this repo to be accessible to all, regardless of coding experience. 
+
+When it comes to implementing AI in finance, we provide template-based approaches that simplify the process. Additionally, we offer guidance on integrating with no-code/low-code tools, making it easier than ever to leverage AI for your financial goals.
 
 
-[![Watch the video](https://img.youtube.com/vi/NIzGctlvzBM/maxresdefault.jpg)](https://youtu.be/NIzGctlvzBM)
+
 
 
 ## Vision
@@ -13,26 +17,22 @@ Our vision is to create a comprehensive learning platform that covers all aspect
 ## Topics Covered
 
 The AI-Automation-Finance covers a wide range of topics related to AI-assisted automations in finance, including:
-
-* Investing and Finance: Learn how AI can be used to automate financial analysis, trading, and investment strategies. Topics covered include:
   + AI-powered stock analysis and prediction
   + Fundamental SEC 10-K based analysis using AI
   + No-code/low-code AI tools for finance and investing
 
-### Fundamental SEC 10-K Based Analysis
-
-One of the key topics covered in the AI-Automation-Finance repository is fundamental SEC 10-K based analysis using AI. The SEC 10-K is an annual report filed by publicly traded companies in the United States, providing a comprehensive overview of the company's financial performance and business operations.
-
-By leveraging AI and machine learning techniques, investors and analysts can automate the process of analyzing SEC 10-K filings to gain insights into a company's financial health and performance. Some of the key areas of focus in fundamental SEC 10-K based analysis include:
-
-* Financial statement analysis: AI can be used to automatically extract financial data from SEC 10-K filings and perform various financial ratios and metrics calculations to evaluate a company's financial health and performance.
-* Text analysis: Natural language processing (NLP) techniques can be used to analyze the textual content of SEC 10-K filings, such as management's discussion and analysis (MD&A) and risk factors, to gain insights into a company's business operations and potential risks.
-
-In the AI-Automation-Finance repository, you'll find a variety of resources and tools to help you get started with fundamental SEC 10-K based analysis using AI. These include tutorials, code examples, and case studies, as well as links to relevant datasets and APIs. We encourage you to explore these resources and contribute your own knowledge and experience to the community.
 
 ## Getting Started
 
-To get started with AI-Automation-Finance, simply clone this repository and explore the contents. You'll find a variety of resources, including tutorials, code examples, and case studies, organized by topic. We encourage you to contribute to the repository by submitting pull requests with your own resources, or by suggesting improvements to existing resources.
+To get started with AI-Automation-Finance watch this video:
+
+[![AI Automation for Finance](https://img.youtube.com/vi/pMvizUx5n1g/0.jpg)](https://youtu.be/pMvizUx5n1g)
+
+
+1. Fork this replit to create your own development environment: [https://replit.com/@DerekCheung9/AI-Automation-For-Finance](https://replit.com/@DerekCheung9/AI-Automation-For-Finance)
+2. Set the values for the environment variables
+3. Run python main.py
+
 
 ## Contributing
 

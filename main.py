@@ -14,14 +14,17 @@ from dotenv import load_dotenv
 assert load_dotenv()
 
 # Get BRAVE_API_KEY from environment variables
-api_key = os.getenv('BRAVE_API_KEY')
+# api_key = os.getenv('BRAVE_API_KEY')
 
-search_tool = BraveSearch.from_api_key(api_key=api_key,
-                                       search_kwargs={"count": 3})
-sec_tool = SecTools()
+#search_tool = BraveSearch.from_api_key(api_key=api_key,
+#                                       search_kwargs={"count": 3})
 #openbb_tool = OpenBBTools()
 
+sec_tool = SecTools()
+
 # Create a chat model
+# Using service http://together.ai
+#
 llm = ChatOpenAI(model="NousResearch/Nous-Hermes-2-Mixtral-8x7B-SFT",
                  temperature=0.7,
                  api_key=os.getenv("TOGETHER_AI_API_KEY"),
@@ -32,7 +35,7 @@ llm = ChatOpenAI(model="NousResearch/Nous-Hermes-2-Mixtral-8x7B-SFT",
 #                        base_url="https://api.together.xyz")
 
 #llm = ChatMistralAI(model="mistral-medium", temperature=0.7)
-llm_writer = ChatAnthropic(model='claude-3-sonnet-20240229')
+#llm_writer = ChatAnthropic(model='claude-3-sonnet-20240229')
 
 # Define your agents with roles and goals
 researcher = Agent(
@@ -42,7 +45,7 @@ researcher = Agent(
     """You work as a research analyst at Goldman Sachs, focusing on fundamental research for tech companies""",
     verbose=True,
     allow_delegation=False,
-    tools=[SecTools.sec, search_tool],
+    tools=[SecTools.sec],
     llm=llm)
 
 visionary = Agent(
@@ -55,12 +58,12 @@ visionary = Agent(
     llm=llm)
 
 writer = Agent(
-    role='Senior editor at the Wall Street Journal',
+    role='Senior editor',
     goal='Writes professional quality articles that are easy to understand',
     backstory=
     """You are a details-oriented senior editor at the Wall Street Journal known for your insightful and engaging articles. You transform complex concepts into factual and impactful narratives.""",
     verbose=True,
-    llm=llm_writer,
+    llm=llm,
     allow_delegation=True)
 
 # Create tasks for your agents
@@ -69,8 +72,6 @@ task1 = Task(
     """please conduct a comprehensive analysis of Nvidia's latest SEC 10-K filing. The analysis should include the following key points:
 
 Business Overview: Briefly describe Nvidia's business model, its products and services, and its target market.
-
-Recent news: Discuss the latest news and events related to Nvidia.
 
 Risk Factors: Identify and discuss the major risk factors that Nvidia has disclosed in its 10-K filing.
 
