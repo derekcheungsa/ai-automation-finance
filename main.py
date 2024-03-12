@@ -9,6 +9,9 @@ from tools.sec_tools import SecTools
 
 from langchain_mistralai.chat_models import ChatMistralAI
 from langchain_anthropic import ChatAnthropic
+from dotenv import load_dotenv
+
+assert load_dotenv()
 
 # Get BRAVE_API_KEY from environment variables
 api_key = os.getenv('BRAVE_API_KEY')
@@ -21,6 +24,7 @@ sec_tool = SecTools()
 # Create a chat model
 llm = ChatOpenAI(model="NousResearch/Nous-Hermes-2-Mixtral-8x7B-SFT",
                  temperature=0.7,
+                 api_key=os.getenv("TOGETHER_AI_API_KEY"),
                  base_url="https://api.together.xyz")
 
 #llm_writer = ChatOpenAI(model="teknium/OpenHermes-2p5-Mistral-7B",
