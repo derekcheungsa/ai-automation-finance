@@ -1,0 +1,756 @@
+{
+  "nodes": [
+    {
+      "width": 300,
+      "height": 426,
+      "id": "openAIEmbeddings_0",
+      "position": {
+        "x": 233.96237750852083,
+        "y": 663.3437919296132
+      },
+      "type": "customNode",
+      "data": {
+        "id": "openAIEmbeddings_0",
+        "label": "OpenAI Embeddings",
+        "version": 2,
+        "name": "openAIEmbeddings",
+        "type": "OpenAIEmbeddings",
+        "baseClasses": [
+          "OpenAIEmbeddings",
+          "Embeddings"
+        ],
+        "category": "Embeddings",
+        "description": "OpenAI API to generate embeddings for a given text",
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "credentialNames": [
+              "openAIApi"
+            ],
+            "id": "openAIEmbeddings_0-input-credential-credential"
+          },
+          {
+            "label": "Model Name",
+            "name": "modelName",
+            "type": "options",
+            "options": [
+              {
+                "label": "text-embedding-3-large",
+                "name": "text-embedding-3-large"
+              },
+              {
+                "label": "text-embedding-3-small",
+                "name": "text-embedding-3-small"
+              },
+              {
+                "label": "text-embedding-ada-002",
+                "name": "text-embedding-ada-002"
+              }
+            ],
+            "default": "text-embedding-ada-002",
+            "optional": true,
+            "id": "openAIEmbeddings_0-input-modelName-options"
+          },
+          {
+            "label": "Strip New Lines",
+            "name": "stripNewLines",
+            "type": "boolean",
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAIEmbeddings_0-input-stripNewLines-boolean"
+          },
+          {
+            "label": "Batch Size",
+            "name": "batchSize",
+            "type": "number",
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAIEmbeddings_0-input-batchSize-number"
+          },
+          {
+            "label": "Timeout",
+            "name": "timeout",
+            "type": "number",
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAIEmbeddings_0-input-timeout-number"
+          },
+          {
+            "label": "BasePath",
+            "name": "basepath",
+            "type": "string",
+            "optional": true,
+            "additionalParams": true,
+            "id": "openAIEmbeddings_0-input-basepath-string"
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "stripNewLines": "",
+          "batchSize": "",
+          "timeout": "",
+          "basepath": "",
+          "modelName": "text-embedding-ada-002"
+        },
+        "outputAnchors": [
+          {
+            "id": "openAIEmbeddings_0-output-openAIEmbeddings-OpenAIEmbeddings|Embeddings",
+            "name": "openAIEmbeddings",
+            "label": "OpenAIEmbeddings",
+            "type": "OpenAIEmbeddings | Embeddings"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "selected": false,
+      "positionAbsolute": {
+        "x": 233.96237750852083,
+        "y": 663.3437919296132
+      },
+      "dragging": false
+    },
+    {
+      "width": 300,
+      "height": 481,
+      "id": "conversationalRetrievalQAChain_0",
+      "position": {
+        "x": 1558.6564094656787,
+        "y": 386.60217819991124
+      },
+      "type": "customNode",
+      "data": {
+        "id": "conversationalRetrievalQAChain_0",
+        "label": "Conversational Retrieval QA Chain",
+        "version": 2,
+        "name": "conversationalRetrievalQAChain",
+        "type": "ConversationalRetrievalQAChain",
+        "baseClasses": [
+          "ConversationalRetrievalQAChain",
+          "BaseChain",
+          "Runnable"
+        ],
+        "category": "Chains",
+        "description": "Document QA - built on RetrievalQAChain to provide a chat history component",
+        "inputParams": [
+          {
+            "label": "Return Source Documents",
+            "name": "returnSourceDocuments",
+            "type": "boolean",
+            "optional": true,
+            "id": "conversationalRetrievalQAChain_0-input-returnSourceDocuments-boolean"
+          },
+          {
+            "label": "Rephrase Prompt",
+            "name": "rephrasePrompt",
+            "type": "string",
+            "description": "Using previous chat history, rephrase question into a standalone question",
+            "warning": "Prompt must include input variables: {chat_history} and {question}",
+            "rows": 4,
+            "additionalParams": true,
+            "optional": true,
+            "default": "Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.\n\nChat History:\n{chat_history}\nFollow Up Input: {question}\nStandalone Question:",
+            "id": "conversationalRetrievalQAChain_0-input-rephrasePrompt-string"
+          },
+          {
+            "label": "Response Prompt",
+            "name": "responsePrompt",
+            "type": "string",
+            "description": "Taking the rephrased question, search for answer from the provided context",
+            "warning": "Prompt must include input variable: {context}",
+            "rows": 4,
+            "additionalParams": true,
+            "optional": true,
+            "default": "You are a helpful assistant. Using the provided context, answer the user's question to the best of your ability using the resources provided.\nIf there is nothing in the context relevant to the question at hand, just say \"Hmm, I'm not sure.\" Don't try to make up an answer.\n------------\n{context}\n------------\nREMEMBER: If there is no relevant information within the context, just say \"Hmm, I'm not sure.\" Don't try to make up an answer.",
+            "id": "conversationalRetrievalQAChain_0-input-responsePrompt-string"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Chat Model",
+            "name": "model",
+            "type": "BaseChatModel",
+            "id": "conversationalRetrievalQAChain_0-input-model-BaseChatModel"
+          },
+          {
+            "label": "Vector Store Retriever",
+            "name": "vectorStoreRetriever",
+            "type": "BaseRetriever",
+            "id": "conversationalRetrievalQAChain_0-input-vectorStoreRetriever-BaseRetriever"
+          },
+          {
+            "label": "Memory",
+            "name": "memory",
+            "type": "BaseMemory",
+            "optional": true,
+            "description": "If left empty, a default BufferMemory will be used",
+            "id": "conversationalRetrievalQAChain_0-input-memory-BaseMemory"
+          }
+        ],
+        "inputs": {
+          "model": "{{chatOpenAICustom_0.data.instance}}",
+          "vectorStoreRetriever": "{{pinecone_0.data.instance}}",
+          "memory": "",
+          "rephrasePrompt": "Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.\n\nChat History:\n{chat_history}\nFollow Up Input: {question}\nStandalone Question:",
+          "responsePrompt": "You are a helpful assistant, Oswald who is skilled at coaching with a Christian faith world view.  You draw upon the wisdom of the Bible for your answers and also from the devotional book \"My Utmost for His Highest\".  Using the provided context, answer the user's question to the best of your ability using the resources provided.  \n\nAs part of the response, include relevant Bible verses.\n\nIf there is nothing in the context relevant to the question at hand, just say \"Hmm, I'm not sure.\" Don't try to make up an answer.\n\nWhen appropriate suggest 3 possible questions that help the person being coached to think deeper and gain deeper insight into their situation.\n------------\n{context}\n------------\nREMEMBER: If there is no relevant information within the context, just say \"Hmm, I'm not sure.\" Don't try to make up an answer.",
+          "returnSourceDocuments": true
+        },
+        "outputAnchors": [
+          {
+            "id": "conversationalRetrievalQAChain_0-output-conversationalRetrievalQAChain-ConversationalRetrievalQAChain|BaseChain|Runnable",
+            "name": "conversationalRetrievalQAChain",
+            "label": "ConversationalRetrievalQAChain",
+            "type": "ConversationalRetrievalQAChain | BaseChain | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "positionAbsolute": {
+        "x": 1558.6564094656787,
+        "y": 386.60217819991124
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "chatOpenAICustom_0",
+      "position": {
+        "x": 1006.0883205410672,
+        "y": -136.47962803289926
+      },
+      "type": "customNode",
+      "data": {
+        "id": "chatOpenAICustom_0",
+        "label": "ChatOpenAI Custom",
+        "version": 2,
+        "name": "chatOpenAICustom",
+        "type": "ChatOpenAI-Custom",
+        "baseClasses": [
+          "ChatOpenAI-Custom",
+          "BaseChatModel",
+          "BaseLanguageModel",
+          "Runnable"
+        ],
+        "category": "Chat Models",
+        "description": "Custom/FineTuned model using OpenAI Chat compatible API",
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "credentialNames": [
+              "openAIApi"
+            ],
+            "optional": true,
+            "id": "chatOpenAICustom_0-input-credential-credential"
+          },
+          {
+            "label": "Model Name",
+            "name": "modelName",
+            "type": "string",
+            "placeholder": "ft:gpt-3.5-turbo:my-org:custom_suffix:id",
+            "id": "chatOpenAICustom_0-input-modelName-string"
+          },
+          {
+            "label": "Temperature",
+            "name": "temperature",
+            "type": "number",
+            "step": 0.1,
+            "default": 0.9,
+            "optional": true,
+            "id": "chatOpenAICustom_0-input-temperature-number"
+          },
+          {
+            "label": "Max Tokens",
+            "name": "maxTokens",
+            "type": "number",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenAICustom_0-input-maxTokens-number"
+          },
+          {
+            "label": "Top Probability",
+            "name": "topP",
+            "type": "number",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenAICustom_0-input-topP-number"
+          },
+          {
+            "label": "Frequency Penalty",
+            "name": "frequencyPenalty",
+            "type": "number",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenAICustom_0-input-frequencyPenalty-number"
+          },
+          {
+            "label": "Presence Penalty",
+            "name": "presencePenalty",
+            "type": "number",
+            "step": 0.1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenAICustom_0-input-presencePenalty-number"
+          },
+          {
+            "label": "Timeout",
+            "name": "timeout",
+            "type": "number",
+            "step": 1,
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenAICustom_0-input-timeout-number"
+          },
+          {
+            "label": "BasePath",
+            "name": "basepath",
+            "type": "string",
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenAICustom_0-input-basepath-string"
+          },
+          {
+            "label": "BaseOptions",
+            "name": "baseOptions",
+            "type": "json",
+            "optional": true,
+            "additionalParams": true,
+            "id": "chatOpenAICustom_0-input-baseOptions-json"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Cache",
+            "name": "cache",
+            "type": "BaseCache",
+            "optional": true,
+            "id": "chatOpenAICustom_0-input-cache-BaseCache"
+          }
+        ],
+        "inputs": {
+          "cache": "",
+          "modelName": "mixtral-8x7b-32768",
+          "temperature": 0.9,
+          "maxTokens": "",
+          "topP": "",
+          "frequencyPenalty": "",
+          "presencePenalty": "",
+          "timeout": "",
+          "basepath": "https://api.groq.com/openai/v1",
+          "baseOptions": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "chatOpenAICustom_0-output-chatOpenAICustom-ChatOpenAI-Custom|BaseChatModel|BaseLanguageModel|Runnable",
+            "name": "chatOpenAICustom",
+            "label": "ChatOpenAI-Custom",
+            "description": "Custom/FineTuned model using OpenAI Chat compatible API",
+            "type": "ChatOpenAI-Custom | BaseChatModel | BaseLanguageModel | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 579,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 1006.0883205410672,
+        "y": -136.47962803289926
+      }
+    },
+    {
+      "id": "pdfFile_0",
+      "position": {
+        "x": 226.61477806645243,
+        "y": 15.722978458215865
+      },
+      "type": "customNode",
+      "data": {
+        "id": "pdfFile_0",
+        "label": "Pdf File",
+        "version": 1,
+        "name": "pdfFile",
+        "type": "Document",
+        "baseClasses": [
+          "Document"
+        ],
+        "category": "Document Loaders",
+        "description": "Load data from PDF files",
+        "inputParams": [
+          {
+            "label": "Pdf File",
+            "name": "pdfFile",
+            "type": "file",
+            "fileType": ".pdf",
+            "id": "pdfFile_0-input-pdfFile-file"
+          },
+          {
+            "label": "Usage",
+            "name": "usage",
+            "type": "options",
+            "options": [
+              {
+                "label": "One document per page",
+                "name": "perPage"
+              },
+              {
+                "label": "One document per file",
+                "name": "perFile"
+              }
+            ],
+            "default": "perPage",
+            "id": "pdfFile_0-input-usage-options"
+          },
+          {
+            "label": "Use Legacy Build",
+            "name": "legacyBuild",
+            "type": "boolean",
+            "optional": true,
+            "additionalParams": true,
+            "id": "pdfFile_0-input-legacyBuild-boolean"
+          },
+          {
+            "label": "Metadata",
+            "name": "metadata",
+            "type": "json",
+            "optional": true,
+            "additionalParams": true,
+            "id": "pdfFile_0-input-metadata-json"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Text Splitter",
+            "name": "textSplitter",
+            "type": "TextSplitter",
+            "optional": true,
+            "id": "pdfFile_0-input-textSplitter-TextSplitter"
+          }
+        ],
+        "inputs": {
+          "textSplitter": "{{recursiveCharacterTextSplitter_0.data.instance}}",
+          "usage": "perPage",
+          "legacyBuild": "",
+          "metadata": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "pdfFile_0-output-pdfFile-Document",
+            "name": "pdfFile",
+            "label": "Document",
+            "description": "Load data from PDF files",
+            "type": "Document"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 509,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 226.61477806645243,
+        "y": 15.722978458215865
+      }
+    },
+    {
+      "id": "recursiveCharacterTextSplitter_0",
+      "position": {
+        "x": -410.1727744090918,
+        "y": 94.30527216796384
+      },
+      "type": "customNode",
+      "data": {
+        "id": "recursiveCharacterTextSplitter_0",
+        "label": "Recursive Character Text Splitter",
+        "version": 2,
+        "name": "recursiveCharacterTextSplitter",
+        "type": "RecursiveCharacterTextSplitter",
+        "baseClasses": [
+          "RecursiveCharacterTextSplitter",
+          "TextSplitter",
+          "BaseDocumentTransformer",
+          "Runnable"
+        ],
+        "category": "Text Splitters",
+        "description": "Split documents recursively by different characters - starting with \"\\n\\n\", then \"\\n\", then \" \"",
+        "inputParams": [
+          {
+            "label": "Chunk Size",
+            "name": "chunkSize",
+            "type": "number",
+            "default": 1000,
+            "optional": true,
+            "id": "recursiveCharacterTextSplitter_0-input-chunkSize-number"
+          },
+          {
+            "label": "Chunk Overlap",
+            "name": "chunkOverlap",
+            "type": "number",
+            "optional": true,
+            "id": "recursiveCharacterTextSplitter_0-input-chunkOverlap-number"
+          },
+          {
+            "label": "Custom Separators",
+            "name": "separators",
+            "type": "string",
+            "rows": 4,
+            "description": "Array of custom separators to determine when to split the text, will override the default separators",
+            "placeholder": "[\"|\", \"##\", \">\", \"-\"]",
+            "additionalParams": true,
+            "optional": true,
+            "id": "recursiveCharacterTextSplitter_0-input-separators-string"
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "chunkSize": "2000",
+          "chunkOverlap": "200",
+          "separators": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "recursiveCharacterTextSplitter_0-output-recursiveCharacterTextSplitter-RecursiveCharacterTextSplitter|TextSplitter|BaseDocumentTransformer|Runnable",
+            "name": "recursiveCharacterTextSplitter",
+            "label": "RecursiveCharacterTextSplitter",
+            "description": "Split documents recursively by different characters - starting with \"\\n\\n\", then \"\\n\", then \" \"",
+            "type": "RecursiveCharacterTextSplitter | TextSplitter | BaseDocumentTransformer | Runnable"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 300,
+      "height": 430,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -410.1727744090918,
+        "y": 94.30527216796384
+      },
+      "dragging": false
+    },
+    {
+      "id": "pinecone_0",
+      "position": {
+        "x": 908.1166427112014,
+        "y": 619.6066148483976
+      },
+      "type": "customNode",
+      "data": {
+        "id": "pinecone_0",
+        "label": "Pinecone",
+        "version": 2,
+        "name": "pinecone",
+        "type": "Pinecone",
+        "baseClasses": [
+          "Pinecone",
+          "VectorStoreRetriever",
+          "BaseRetriever"
+        ],
+        "category": "Vector Stores",
+        "description": "Upsert embedded data and perform similarity or mmr search using Pinecone, a leading fully managed hosted vector database",
+        "inputParams": [
+          {
+            "label": "Connect Credential",
+            "name": "credential",
+            "type": "credential",
+            "credentialNames": [
+              "pineconeApi"
+            ],
+            "id": "pinecone_0-input-credential-credential"
+          },
+          {
+            "label": "Pinecone Index",
+            "name": "pineconeIndex",
+            "type": "string",
+            "id": "pinecone_0-input-pineconeIndex-string"
+          },
+          {
+            "label": "Pinecone Namespace",
+            "name": "pineconeNamespace",
+            "type": "string",
+            "placeholder": "my-first-namespace",
+            "additionalParams": true,
+            "optional": true,
+            "id": "pinecone_0-input-pineconeNamespace-string"
+          },
+          {
+            "label": "Pinecone Metadata Filter",
+            "name": "pineconeMetadataFilter",
+            "type": "json",
+            "optional": true,
+            "additionalParams": true,
+            "id": "pinecone_0-input-pineconeMetadataFilter-json"
+          },
+          {
+            "label": "Top K",
+            "name": "topK",
+            "description": "Number of top results to fetch. Default to 4",
+            "placeholder": "4",
+            "type": "number",
+            "additionalParams": true,
+            "optional": true,
+            "id": "pinecone_0-input-topK-number"
+          },
+          {
+            "label": "Search Type",
+            "name": "searchType",
+            "type": "options",
+            "default": "similarity",
+            "options": [
+              {
+                "label": "Similarity",
+                "name": "similarity"
+              },
+              {
+                "label": "Max Marginal Relevance",
+                "name": "mmr"
+              }
+            ],
+            "additionalParams": true,
+            "optional": true,
+            "id": "pinecone_0-input-searchType-options"
+          },
+          {
+            "label": "Fetch K (for MMR Search)",
+            "name": "fetchK",
+            "description": "Number of initial documents to fetch for MMR reranking. Default to 20. Used only when the search type is MMR",
+            "placeholder": "20",
+            "type": "number",
+            "additionalParams": true,
+            "optional": true,
+            "id": "pinecone_0-input-fetchK-number"
+          },
+          {
+            "label": "Lambda (for MMR Search)",
+            "name": "lambda",
+            "description": "Number between 0 and 1 that determines the degree of diversity among the results, where 0 corresponds to maximum diversity and 1 to minimum diversity. Used only when the search type is MMR",
+            "placeholder": "0.5",
+            "type": "number",
+            "additionalParams": true,
+            "optional": true,
+            "id": "pinecone_0-input-lambda-number"
+          }
+        ],
+        "inputAnchors": [
+          {
+            "label": "Document",
+            "name": "document",
+            "type": "Document",
+            "list": true,
+            "optional": true,
+            "id": "pinecone_0-input-document-Document"
+          },
+          {
+            "label": "Embeddings",
+            "name": "embeddings",
+            "type": "Embeddings",
+            "id": "pinecone_0-input-embeddings-Embeddings"
+          }
+        ],
+        "inputs": {
+          "document": [
+            "{{pdfFile_0.data.instance}}"
+          ],
+          "embeddings": "{{openAIEmbeddings_0.data.instance}}",
+          "pineconeIndex": "amd",
+          "pineconeNamespace": "",
+          "pineconeMetadataFilter": "",
+          "topK": "",
+          "searchType": "similarity",
+          "fetchK": "",
+          "lambda": ""
+        },
+        "outputAnchors": [
+          {
+            "name": "output",
+            "label": "Output",
+            "type": "options",
+            "description": "",
+            "options": [
+              {
+                "id": "pinecone_0-output-retriever-Pinecone|VectorStoreRetriever|BaseRetriever",
+                "name": "retriever",
+                "label": "Pinecone Retriever",
+                "description": "",
+                "type": "Pinecone | VectorStoreRetriever | BaseRetriever"
+              },
+              {
+                "id": "pinecone_0-output-vectorStore-Pinecone|VectorStore",
+                "name": "vectorStore",
+                "label": "Pinecone Vector Store",
+                "description": "",
+                "type": "Pinecone | VectorStore"
+              }
+            ],
+            "default": "retriever"
+          }
+        ],
+        "outputs": {
+          "output": "retriever"
+        },
+        "selected": false
+      },
+      "width": 300,
+      "height": 557,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 908.1166427112014,
+        "y": 619.6066148483976
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "chatOpenAICustom_0",
+      "sourceHandle": "chatOpenAICustom_0-output-chatOpenAICustom-ChatOpenAI-Custom|BaseChatModel|BaseLanguageModel|Runnable",
+      "target": "conversationalRetrievalQAChain_0",
+      "targetHandle": "conversationalRetrievalQAChain_0-input-model-BaseChatModel",
+      "type": "buttonedge",
+      "id": "chatOpenAICustom_0-chatOpenAICustom_0-output-chatOpenAICustom-ChatOpenAI-Custom|BaseChatModel|BaseLanguageModel|Runnable-conversationalRetrievalQAChain_0-conversationalRetrievalQAChain_0-input-model-BaseChatModel"
+    },
+    {
+      "source": "recursiveCharacterTextSplitter_0",
+      "sourceHandle": "recursiveCharacterTextSplitter_0-output-recursiveCharacterTextSplitter-RecursiveCharacterTextSplitter|TextSplitter|BaseDocumentTransformer|Runnable",
+      "target": "pdfFile_0",
+      "targetHandle": "pdfFile_0-input-textSplitter-TextSplitter",
+      "type": "buttonedge",
+      "id": "recursiveCharacterTextSplitter_0-recursiveCharacterTextSplitter_0-output-recursiveCharacterTextSplitter-RecursiveCharacterTextSplitter|TextSplitter|BaseDocumentTransformer|Runnable-pdfFile_0-pdfFile_0-input-textSplitter-TextSplitter"
+    },
+    {
+      "source": "pdfFile_0",
+      "sourceHandle": "pdfFile_0-output-pdfFile-Document",
+      "target": "pinecone_0",
+      "targetHandle": "pinecone_0-input-document-Document",
+      "type": "buttonedge",
+      "id": "pdfFile_0-pdfFile_0-output-pdfFile-Document-pinecone_0-pinecone_0-input-document-Document"
+    },
+    {
+      "source": "openAIEmbeddings_0",
+      "sourceHandle": "openAIEmbeddings_0-output-openAIEmbeddings-OpenAIEmbeddings|Embeddings",
+      "target": "pinecone_0",
+      "targetHandle": "pinecone_0-input-embeddings-Embeddings",
+      "type": "buttonedge",
+      "id": "openAIEmbeddings_0-openAIEmbeddings_0-output-openAIEmbeddings-OpenAIEmbeddings|Embeddings-pinecone_0-pinecone_0-input-embeddings-Embeddings"
+    },
+    {
+      "source": "pinecone_0",
+      "sourceHandle": "pinecone_0-output-retriever-Pinecone|VectorStoreRetriever|BaseRetriever",
+      "target": "conversationalRetrievalQAChain_0",
+      "targetHandle": "conversationalRetrievalQAChain_0-input-vectorStoreRetriever-BaseRetriever",
+      "type": "buttonedge",
+      "id": "pinecone_0-pinecone_0-output-retriever-Pinecone|VectorStoreRetriever|BaseRetriever-conversationalRetrievalQAChain_0-conversationalRetrievalQAChain_0-input-vectorStoreRetriever-BaseRetriever"
+    }
+  ]
+}

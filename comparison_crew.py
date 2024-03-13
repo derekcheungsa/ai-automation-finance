@@ -45,7 +45,7 @@ researcher = Agent(
     """You work as a research analyst at Goldman Sachs, focusing on fundamental research for tech companies""",
     verbose=True,
     allow_delegation=False,
-    tools=[SecTools.sec_nvda],
+    tools=[SecTools.sec_amd, SecTools.sec_nvda],
     llm=llm)
 
 visionary = Agent(
@@ -69,19 +69,19 @@ writer = Agent(
 # Create tasks for your agents
 task1 = Task(
     description=
-    """please conduct a comprehensive analysis of Nvidia's latest SEC 10-K filing. The analysis should include the following key points:
+    """please conduct a comprehensive comparative analysis of the latest SEC 10-K filings for AMD and Nvidia. The analysis should cover the following key aspects:
 
-  Business Overview: Briefly describe Nvidia's business model, its products and services, and its target market.
+  Business Overview: Compare and contrast AMD's and Nvidia's business models, their products and services, and their target markets.
 
-  Risk Factors: Identify and discuss the major risk factors that Nvidia has disclosed in its 10-K filing.
+  Risk Factors: Identify and discuss the major risk factors disclosed in the SEC 10-K filings by both AMD and Nvidia.
 
-  Management's Discussion and Analysis (MD&A): Summarize the key points from the MD&A section, including any significant changes in operations, financial condition, or liquidity.
+  Management's Discussion and Analysis (MD&A): Summarize the key points from the MD&A sections for both companies, including any significant changes in operations, financial condition, or liquidity.
 
-  Competitive Landscape: Discuss Nvidia's competitive position in its industry and how it compares to its major competitors.
+  Competitive Landscape: Analyze the competitive positions of AMD and Nvidia within their industry, comparing them to each other and to their major competitors.
 
-  Future Outlook: Based on the information in the 10-K filing and your analysis, provide a brief outlook on Nvidia's future performance.
+  Future Outlook: Based on the information in the 10-K filings and your analysis, provide a comparative outlook on the future performance of AMD and Nvidia.
 
-  Please ensure that all information is sourced from Nvidia's latest SEC 10-K filing and that the analysis is unbiased and factual.""",
+  Please ensure that all information is sourced from the latest SEC 10-K filings for both AMD and Nvidia, and that the analysis is unbiased and factual.""",
     expected_output="Full analysis report in bullet points",
     agent=researcher)
 
@@ -107,7 +107,7 @@ task3 = Task(
     description=
     """Using the insights provided by the Senior Research Analyst and Visionary,please craft an expertly styled report that is targeted towards the investor community. Make sure to also include the long-term implications insights that your co-worker, Visionary, has shared.  
     
-    Please ensure that the report is written in a professional tone and style, and that all information is sourced from Nvidia's latest SEC 10-K filing. Write in a format and style worthy to be published in the wall street journal.""",
+    Please ensure that the report is written in a professional tone and style, and that all information is sourced from the latest SEC 10-K filings for both AMD and Nvidia. Write in a format and style worthy to be published in the Wall Street Journal, focusing on a comparative analysis of AMD and Nvidia based on their SEC 10-K filings.""",
     expected_output=
     "A detailed comprehensive report on NVDIA that expertly presents the research done by your co-worker, Senior Research Analyst and Visionary",
     agent=writer)
