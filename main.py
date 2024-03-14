@@ -27,7 +27,7 @@ sec_tool = SecTools()
 #
 llm = ChatOpenAI(model="NousResearch/Nous-Hermes-2-Mixtral-8x7B-SFT",
                  temperature=0.7,
-                 api_key=os.getenv("TOGETHER_AI_API_KEY"),
+                 api_key=os.getenv("OPENAI_API_KEY"),
                  base_url="https://api.together.xyz")
 
 #llm_writer = ChatOpenAI(model="teknium/OpenHermes-2p5-Mistral-7B",
@@ -35,7 +35,7 @@ llm = ChatOpenAI(model="NousResearch/Nous-Hermes-2-Mixtral-8x7B-SFT",
 #                        base_url="https://api.together.xyz")
 
 #llm = ChatMistralAI(model="mistral-medium", temperature=0.7)
-llm_writer = ChatAnthropic(model='claude-3-sonnet-20240229')
+llm_writer = ChatAnthropic(model='claude-3-haiku-20240307')
 
 # Define your agents with roles and goals
 researcher = Agent(
