@@ -35,7 +35,7 @@ llm = ChatOpenAI(model="NousResearch/Nous-Hermes-2-Mixtral-8x7B-SFT",
 #                        base_url="https://api.together.xyz")
 
 #llm = ChatMistralAI(model="mistral-medium", temperature=0.7)
-llm_writer = ChatAnthropic(model='claude-3-sonnet-20240229')
+llm_writer = ChatAnthropic(model='claude-3-haiku-20240307')
 
 # Define your agents with roles and goals
 researcher = Agent(
