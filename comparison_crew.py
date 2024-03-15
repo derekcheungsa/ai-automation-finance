@@ -63,7 +63,7 @@ writer = Agent(
     backstory=
     """You are a details-oriented senior editor at the Wall Street Journal known for your insightful and engaging articles. You transform complex concepts into factual and impactful narratives.""",
     verbose=True,
-    llm=llm_writer,
+    llm=llm,
     allow_delegation=True)
 
 # Create tasks for your agents
@@ -109,7 +109,7 @@ task3 = Task(
     
     Please ensure that the report is written in a professional tone and style, and that all information is sourced from the latest SEC 10-K filings for both AMD and Nvidia. Write in a format and style worthy to be published in the Wall Street Journal, focusing on a comparative analysis of AMD and Nvidia based on their SEC 10-K filings.""",
     expected_output=
-    "A detailed comprehensive report on NVDIA that expertly presents the research done by your co-worker, Senior Research Analyst and Visionary",
+    "A detailed comprehensive report comparing NVDIA and AMD that expertly presents the research done by your co-worker, Senior Research Analyst and Visionary.  Report should be in markdown language format",
     agent=writer)
 
 # Instantiate your crew with a sequential process
