@@ -23,7 +23,7 @@ class SecTools():
     # answer = response.text
 
     # FLOWISE
-    response = requests.post(FLOWISE_NVDA_URL, json={'question': question})
+    response = requests.post(N8N_WEBHOOK_URL, json={'question': question})
     answer = response.json().get('text', 'No text available')
 
     return answer

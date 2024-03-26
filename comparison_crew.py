@@ -35,6 +35,7 @@ llm = ChatOpenAI(model="NousResearch/Nous-Hermes-2-Mixtral-8x7B-SFT",
 #                        base_url="https://api.together.xyz")
 
 #llm = ChatMistralAI(model="mistral-medium", temperature=0.7)
+#llm = ChatAnthropic(model='claude-3-haiku-20240307')
 llm_writer = ChatAnthropic(model='claude-3-haiku-20240307')
 
 # Define your agents with roles and goals
@@ -69,19 +70,25 @@ writer = Agent(
 # Create tasks for your agents
 task1 = Task(
     description=
-    """please conduct a comprehensive comparative analysis of the latest SEC 10-K filings for AMD and Nvidia. The analysis should cover the following key aspects:
+    """Please conduct a comprehensive comparative analysis of the latest SEC Form 10-K annual reports for Advanced Micro Devices, Inc. (AMD) and Nvidia Corporation (Nvidia). The analysis should cover the following key aspects in detail:
 
-  Business Overview: Compare and contrast AMD's and Nvidia's business models, their products and services, and their target markets.
+  1. Business Overview:
+  Provide an in-depth overview of AMD's and Nvidia's business models, product portfolios (e.g., CPUs, GPUs, accelerators), services, and primary target markets.
+  
 
-  Risk Factors: Identify and discuss the major risk factors disclosed in the SEC 10-K filings by both AMD and Nvidia.
+  2. Risk Factors:
+  Identify and critically analyze the significant risk factors disclosed in the Risk Factors section of both companies' 10-K filings.
+  
+  3. Management's Discussion and Analysis (MD&A):
+  Summarize and compare the key points from the MD&A sections, including changes in revenue, costs, profitability, and cash flows.
+  
+  4. Competitive Landscape:
+  Provide an in-depth analysis of the competitive positions of AMD and Nvidia within their respective markets.
+  
+  5. Future Outlook:
+  Based on the information in the 10-K filings, industry trends, and your analysis, provide a comparative outlook on the future performance of AMD and Nvidia.
 
-  Management's Discussion and Analysis (MD&A): Summarize the key points from the MD&A sections for both companies, including any significant changes in operations, financial condition, or liquidity.
-
-  Competitive Landscape: Analyze the competitive positions of AMD and Nvidia within their industry, comparing them to each other and to their major competitors.
-
-  Future Outlook: Based on the information in the 10-K filings and your analysis, provide a comparative outlook on the future performance of AMD and Nvidia.
-
-  Please ensure that all information is sourced from the latest SEC 10-K filings for both AMD and Nvidia, and that the analysis is unbiased and factual.""",
+Please ensure that all information and analysis are sourced directly from the latest SEC Form 10-K filings for AMD and Nvidia. The analysis should be unbiased, factual, and supported by evidence from the filings. Clearly differentiate between factual statements from the filings and your own interpretations or opinions""",
     expected_output="Full analysis report in bullet points",
     agent=researcher)
 
@@ -109,7 +116,7 @@ task3 = Task(
     
     Please ensure that the report is written in a professional tone and style, and that all information is sourced from the latest SEC 10-K filings for both AMD and Nvidia. Write in a format and style worthy to be published in the Wall Street Journal, focusing on a comparative analysis of AMD and Nvidia based on their SEC 10-K filings.""",
     expected_output=
-    "A detailed comprehensive report comparing NVDIA and AMD that expertly presents the research done by your co-worker, Senior Research Analyst and Visionary.  Report should be in markdown language format",
+    "A detailed comprehensive report comparing NVDIA and AMD that expertly presents the research done by your co-worker, Senior Research Analyst and Visionary. Please provide report in markdown language",
     agent=writer)
 
 # Instantiate your crew with a sequential process

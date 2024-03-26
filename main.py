@@ -35,7 +35,7 @@ llm = ChatOpenAI(model="NousResearch/Nous-Hermes-2-Mixtral-8x7B-SFT",
 #                        base_url="https://api.together.xyz")
 
 #llm = ChatMistralAI(model="mistral-medium", temperature=0.7)
-llm_writer = ChatAnthropic(model='claude-3-haiku-20240307')
+#llm_writer = ChatAnthropic(model='claude-3-haiku-20240307')
 
 # Define your agents with roles and goals
 researcher = Agent(
@@ -63,7 +63,7 @@ writer = Agent(
     backstory=
     """You are a details-oriented senior editor at the Wall Street Journal known for your insightful and engaging articles. You transform complex concepts into factual and impactful narratives.""",
     verbose=True,
-    llm=llm_writer,
+    llm=llm,
     allow_delegation=True)
 
 # Create tasks for your agents
