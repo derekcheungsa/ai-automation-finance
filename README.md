@@ -52,7 +52,7 @@ We are committed to creating a welcoming and inclusive community for everyone. P
 
 ## License
 
-AI-Automation-Finance is licensed under the MIT license. See the [LICENSE](LICENSE) file for more information.
+AI-Automation-Finance is licensed under the Apache 2.0 license. See the [LICENSE](LICENSE) file for more information.
 
 ## Contact
 
